@@ -1,0 +1,12 @@
+package com.daycam.facturar.api.services;
+
+import org.springframework.stereotype.Service;
+
+import com.daycam.facturar.api.dto.UsuarioDto;
+
+
+@Service
+public interface UsuarioService {
+	
+	void save(UsuarioDto usuarioDto);
+}

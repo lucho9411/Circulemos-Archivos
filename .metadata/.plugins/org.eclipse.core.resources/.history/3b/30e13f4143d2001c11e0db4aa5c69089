@@ -1,0 +1,42 @@
+package com.daycam.facturar.api.controlles;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.daycam.facturar.api.dto.ParametrosDto;
+import com.daycam.facturar.api.entities.Parametros;
+import com.daycam.facturar.api.services.impl.ParametrosImpl;
+
+@CrossOrigin("*")
+@RestController
+@RequestMapping("/parametros")
+public class ParametrosController {
+	
+	@Autowired
+	private ParametrosImpl parametrosImpl;
+	
+	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
+    public String saveBirthCertificate(@RequestBody Parametros parametro) {
+
+        return parametrosImpl.save(parametro);
+
+    }
+	
+	@CrossOrigin(origins = "http://localhost:8080")
+	@GetMapping("/tipo_usuario")
+	@ResponseBody
+	public List<ParametrosDto> getTipoUsuario() {
+		return this.parametrosImpl.findAtributoTipoUsuario("tipo_usuario");
+	}
+	
+
+}

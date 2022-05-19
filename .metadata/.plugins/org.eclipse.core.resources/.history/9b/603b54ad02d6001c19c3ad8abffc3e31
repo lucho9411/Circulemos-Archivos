@@ -1,0 +1,33 @@
+package com.daycam.facturar.api.services.impl;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import com.daycam.facturar.api.commons.MHelpers;
+import com.daycam.facturar.api.dto.UsuarioDto;
+import com.daycam.facturar.api.entities.Usuario;
+import com.daycam.facturar.api.repositories.UsuarioRepositoriy;
+import com.daycam.facturar.api.services.UsuarioService;
+
+@Component
+public class UsuarioImpl implements UsuarioService {
+
+	@Autowired
+	private UsuarioRepositoriy usuarioRepositoriy;
+	
+	@Override
+	public Usuario save(UsuarioDto usuarioDto) {
+		try {
+			if (usuarioDto != null) {
+				Usuario usuario = MHelpers.modelMapper().map(usuarioDto, Usuario.class);
+				return this.usuarioRepositoriy.save(usuario);
+			}
+		} catch (Exception e) {
+			System.out.print("error save user: " + e.getLocalizedMessage());
+			return null;
+		}
+		
+		return null;
+	}
+
+}

@@ -1,0 +1,18 @@
+package com.daycam.facturar.api.services.impl;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+
+import com.daycam.facturar.api.repositories.UsuarioRepositoriy;
+import com.daycam.facturar.api.services.UsuarioService;
+
+@Component
+public abstract class UsuarioImpl implements UsuarioService {
+
+	@Autowired
+	private UsuarioRepositoriy usuarioRepositoriy;
+	
+	
+
+}
